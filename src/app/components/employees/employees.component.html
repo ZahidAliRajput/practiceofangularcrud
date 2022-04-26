@@ -1,0 +1,46 @@
+
+
+<form (ngSubmit)="insertData()">
+    
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="employee.name">
+    </div>
+
+    
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="employee.email">
+      </div>
+
+      
+    <div class="mb-3">
+        <label for="exampleInputSalary" class="form-label">Salary</label>
+        <input type="text" class="form-control" name="salary" [(ngModel)]="employee.salary">
+      </div>
+
+    <button class="btn btn-primary">Submit</button>
+  </form>
+
+<br><br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees">
+        <th scope="row">{{ emp.id }}</th>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.salary }}</td>
+        <td><button class="btn btn-danger btn-sm" (click)="deleteData(emp.id)">Delete</button></td>
+        <td><button class="btn btn-warning btn-sm" routerLink="edit/{{ emp.id }}">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
